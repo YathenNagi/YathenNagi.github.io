@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT: replace "Yathen Nagireddi" everywhere -->
+  <title>Yathen Nagireddi | Portfolio</title>
+  <meta name="description" content="Portfolio of Yathen Nagireddi">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --ink: #161a2e;
+      --muted: #5b6178;
+      --line: #e3e6f0;
+      --accent: #3a56e8;
+      --accent-soft: #e8ecff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1220;
+        --surface: #181c30;
+        --ink: #f1f3fb;
+        --muted: #a0a6c0;
+        --line: #2a2f4a;
+        --accent: #8ea0ff;
+        --accent-soft: #232a52;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    .wrap { width: min(1040px, 100% - 3rem); margin-inline: auto; }
+
+    /* Nav */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .logo { font-weight: 800; text-decoration: none; letter-spacing: -0.02em; }
+    nav ul { display: flex; gap: 1.75rem; list-style: none; }
+    nav ul a { text-decoration: none; color: var(--muted); font-size: 0.95rem; font-weight: 500; transition: color .2s; }
+    nav ul a:hover { color: var(--accent); }
+
+    /* Hero */
+    .hero { padding: 6rem 0 5rem; }
+    .hero .wrap { display: grid; grid-template-columns: 1fr 300px; gap: 4rem; align-items: center; }
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 800; line-height: 1.05; letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+    .statement { font-size: 1.2rem; color: var(--muted); max-width: 34rem; margin-bottom: 2rem; }
+    .buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.8rem 1.4rem; border-radius: 999px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      border: 1.5px solid var(--ink); transition: transform .15s, background .2s, color .2s;
+    }
+    .btn.primary { background: var(--ink); color: var(--bg); }
+    .btn:hover { transform: translateY(-2px); }
+    .headshot {
+      width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 28px;
+      box-shadow: 14px 14px 0 var(--accent-soft), 0 0 0 1px var(--line);
+      background: var(--surface);
+    }
+
+    /* Sections */
+    section { padding: 4.5rem 0; }
+    h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .section-intro { color: var(--muted); margin-bottom: 2.5rem; max-width: 36rem; }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .skill-group { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; }
+    .skill-group h3 { font-size: 1.05rem; margin-bottom: 1rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
+    .chips li {
+      background: var(--accent-soft); color: var(--accent);
+      font-size: 0.88rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 999px;
+    }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
+    .project {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
+      padding: 1.75rem; display: flex; flex-direction: column; transition: transform .2s, border-color .2s;
+    }
+    .project:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .project h3 { font-size: 1.25rem; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+    .project p { color: var(--muted); font-size: 0.97rem; margin-bottom: 1.25rem; flex: 1; }
+    .project .tags { color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+    .project a { font-weight: 600; text-decoration: none; color: var(--accent); }
+    .project a:hover { text-decoration: underline; }
+
+    footer { border-top: 1px solid var(--line); padding: 2rem 0; text-align: center; color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 800px) {
+      .hero { padding: 3.5rem 0 3rem; }
+      .hero .wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .headshot { max-width: 260px; order: -1; }
+      nav ul { gap: 1.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="wrap" aria-label="Main">
+      <a class="logo" href="#top">Yathen Nagireddi</a>
+      <ul>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- Personal statement -->
+    <div class="hero">
+      <div class="wrap">
+        <div>
+          <h1>Hi, I'm Yathen.</h1>
+          <!-- EDIT: one sentence, "who you are in one sentence" -->
+          <p class="statement">I'm a Finance and Business Analytics &amp; IT (BAIT) student who builds valuation and deal models to turn complex financial data into clear investment decisions.</p>
+          <div class="buttons">
+            <a class="btn primary" href="#projects">See my work</a>
+          </div>
+        </div>
+        <img class="headshot" src="headshop.jpeg" alt="Headshot of Yathen Nagireddi" onerror="var a=['headshot.jpeg','headshot.jpg','headshot.png','headshot.JPG','headshot.JPEG','Headshot.jpeg'],i=+(this.dataset.i||0);if(i<a.length){this.dataset.i=i+1;this.src=a[i]}else{this.onerror=null}">
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="wrap">
+        <h2>Skills</h2>
+        <p class="section-intro">The tools and strengths I bring to a team.</p>
+        <!-- EDIT: swap in your real skills; keep them relevant to employers -->
+        <div class="skills">
+          <div class="skill-group">
+            <h3>Finance</h3>
+            <ul class="chips">
+              <li>Financial modeling</li>
+              <li>Valuation (DCF)</li>
+              <li>Financial statement analysis</li>
+              <li>Budgeting &amp; forecasting</li>
+              <li>Excel</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Analytics &amp; Tech</h3>
+            <ul class="chips">
+              <li>SQL</li>
+              <li>Python</li>
+              <li>Tableau</li>
+              <li>Power BI</li>
+              <li>Git &amp; GitHub</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Professional</h3>
+            <ul class="chips">
+              <li>Communication</li>
+              <li>Teamwork</li>
+              <li>Problem solving</li>
+              <li>Attention to detail</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="wrap">
+        <h2>Projects</h2>
+        <p class="section-intro">Financial models I've built, from valuation to deal analysis.</p>
+        <!-- EDIT: replace titles, summaries, and the href links with your real project URLs -->
+        <div class="projects">
+          <article class="project">
+            <h3>WD-40 Valuation Model</h3>
+            <p class="tags">Excel · DCF · Comparable companies</p>
+            <p>Built a full three-statement model and discounted cash flow valuation for WD-40 (WDFC) with a 6.2% WACC and 2% terminal growth. The DCF estimated a value of about $154 per share against a $221 market price, which supported a sell rating. I cross-checked the result with dividend discount models, trading and transaction comps, and an analysis at various prices.</p>
+            <a href="wdfc-model.html">View the model</a>
+          </article>
+          <article class="project">
+            <h3>Leveraged Buyout Analysis</h3>
+            <p class="tags">Excel · LBO · Returns analysis</p>
+            <p>Modeled a €450M buyout at 10x EBITDA, funded with senior debt, seller's notes, a shareholder loan, management rollover, and sponsor equity. With a five-year cash sweep, the sponsor earns about a 19% IRR and 2.4x money multiple at a 10x exit. I tested exit multiples and leverage levels and recommended the deal.</p>
+            <a href="lbo-model.html">View the model</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">&copy; 2026 Yathen Nagireddi</div>
+  </footer>
+
+</body>
+</html>
